@@ -24,6 +24,7 @@ Requires: %mklibname mozilla-firefox %{firefox_version}
 
 
 Requires: perl-Gtk2 
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This package adds perl support for the Gecko engine.
