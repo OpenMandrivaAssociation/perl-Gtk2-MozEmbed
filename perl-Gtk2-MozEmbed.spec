@@ -4,7 +4,7 @@
 Summary: Perl module for the Gecko engine
 Name:    perl-%module
 Version: 0.07
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL or Artistic
 Group:   Development/GNOME and GTK+
 Source:  http://prdownloads.sourceforge.net/gtk2-perl/%module-%version.tar.bz2
