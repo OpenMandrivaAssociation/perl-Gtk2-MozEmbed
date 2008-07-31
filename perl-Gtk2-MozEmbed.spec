@@ -4,7 +4,7 @@
 Summary: Perl module for the Gecko engine
 Name:    perl-%module
 Version: 0.07
-Release: %mkrel 4
+Release: %mkrel 5
 License: GPL or Artistic
 Group:   Development/GNOME and GTK+
 Source:  http://prdownloads.sourceforge.net/gtk2-perl/%module-%version.tar.bz2
@@ -15,11 +15,19 @@ BuildRequires: perl-Gtk2 >= 1.081
 BuildRequires: perl-ExtUtils-PkgConfig
 # ensure we link/requires the right browser:
 BuildConflicts: mozilla-devel
+%if %mdkversion < 200900
 BuildRequires: mozilla-firefox-devel
+%else
+BuildRequires: xulrunner-devel-unstable
+%endif
 BuildRequires: glib2-devel
 BuildRequires: gtk+2-devel
+%if %mdkversion < 200900
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
+%else
+Requires: %mklibname xulrunner 1.9
+%endif
 
 
 
