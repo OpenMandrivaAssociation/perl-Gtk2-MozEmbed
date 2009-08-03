@@ -1,18 +1,21 @@
-%define module Gtk2-MozEmbed
-%define fmodule MozEmbed
+%define upstream_name    Gtk2-MozEmbed
+%define upstream_version 0.08
 
-Summary: Perl module for the Gecko engine
-Name:    perl-%module
-Version: 0.08
-Release: %mkrel 1
-License: GPL or Artistic
-Group:   Development/GNOME and GTK+
-Source:  http://prdownloads.sourceforge.net/gtk2-perl/%module-%version.tar.bz2
-URL: http://gtk2-perl.sf.net/
-BuildRequires: perl-devel 
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    Perl module for the Gecko engine
+License:    GPL+ or Artistic
+Group:      Development/GNOME and GTK+
+Url:        http://gtk2-perl.sf.net/
+Source0:    http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstream_version}.tar.bz2
+
+BuildRequires: glib2-devel
+BuildRequires: gtk+2-devel
 BuildRequires: perl-ExtUtils-Depends 
-BuildRequires: perl-Gtk2 >= 1.081
 BuildRequires: perl-ExtUtils-PkgConfig
+BuildRequires: perl-Gtk2 >= 1.081
 # ensure we link/requires the right browser:
 BuildConflicts: mozilla-devel
 %if %mdkversion < 200900
@@ -20,25 +23,22 @@ BuildRequires: mozilla-firefox-devel
 %else
 BuildRequires: xulrunner-devel-unstable
 %endif
-BuildRequires: glib2-devel
-BuildRequires: gtk+2-devel
 %if %mdkversion < 200900
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
 %else
 Requires: %mklibname xulrunner 1.9
 %endif
-
-
+BuildRequires: perl-devel 
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 Requires: perl-Gtk2 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This package adds perl support for the Gecko engine.
 
 %prep
-%setup -q -n %module-%version
+%setup -q -n %{upstream_name}-%{upstream_version}
 find -type d -name CVS | rm -rf 
 
 %build
