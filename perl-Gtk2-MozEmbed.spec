@@ -1,9 +1,13 @@
 %define upstream_name    Gtk2-MozEmbed
 %define upstream_version 0.08
 
+%if %{?xulrunner_libname:0}%{?!xulrunner_libname:1}
+%define xulrunner_libname libxulrunner
+%endif
+
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Release:    %mkrel 2
 
 Summary:    Perl module for the Gecko engine
 License:    GPL+ or Artistic
@@ -20,14 +24,16 @@ BuildRequires: perl-Gtk2 >= 1.081
 BuildConflicts: mozilla-devel
 %if %mdkversion < 200900
 BuildRequires: mozilla-firefox-devel
-%else
+%elif %mdvver < 201000
 BuildRequires: xulrunner-devel-unstable
+%else 
+BuildRequires: xulrunner-devel
 %endif
 %if %mdkversion < 200900
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
 %else
-Requires: %mklibname xulrunner 1.9
+Requires: %xulrunner_libname
 %endif
 BuildRequires: perl-devel 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
