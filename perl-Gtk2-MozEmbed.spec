@@ -7,7 +7,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 5
+Release:    %mkrel 6
 
 Summary:    Perl module for the Gecko engine
 License:    GPL+ or Artistic
