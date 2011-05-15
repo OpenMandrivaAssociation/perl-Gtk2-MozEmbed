@@ -1,5 +1,5 @@
 %define upstream_name    Gtk2-MozEmbed
-%define upstream_version 0.08
+%define upstream_version 0.09
 
 %if %{?xulrunner_libname:0}%{?!xulrunner_libname:1}
 %define xulrunner_libname libxulrunner
@@ -7,7 +7,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 9
+Release:    %mkrel 1
 
 Summary:    Perl module for the Gecko engine
 License:    GPL+ or Artistic
