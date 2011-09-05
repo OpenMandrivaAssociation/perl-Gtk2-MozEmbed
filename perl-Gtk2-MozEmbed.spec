@@ -7,7 +7,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Release:    %mkrel 7
 
 Summary:    Perl module for the Gecko engine
 License:    GPL+ or Artistic
@@ -48,11 +48,8 @@ This package adds perl support for the Gecko engine.
 find -type d -name CVS | rm -rf 
 
 %build
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
-export GTK2_PERL_CFLAGS="$RPM_OPT_FLAGS"
 perl Makefile.PL INSTALLDIRS=vendor
-make OPTIMIZE="$RPM_OPT_FLAGS"
-#%make test || :
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
