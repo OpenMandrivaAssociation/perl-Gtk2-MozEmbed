@@ -12,7 +12,7 @@ Release:	8
 Summary:    Perl module for the Gecko engine
 License:    GPL+ or Artistic
 Group:      Development/GNOME and GTK+
-Url:        http://gtk2-perl.sf.net/
+Url:        https://gtk2-perl.sf.net/
 Source0:    http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstream_version}.tar.bz2
 
 BuildRequires: glib2-devel
